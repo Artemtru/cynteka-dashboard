@@ -1,0 +1,17 @@
+services:
+  cynteka-dashboard:
+    build: .
+    container_name: cynteka-dashboard
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    restart: unless-stopped
+    networks:
+      - cynteka-net
+    volumes:
+      - ./logs:/app/logs
+
+networks:
+  cynteka-net:
+    driver: bridge
