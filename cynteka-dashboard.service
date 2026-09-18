@@ -1,0 +1,15 @@
+[Unit]
+Description=Cynteka Dashboard
+After=network.target
+
+[Service]
+Type=simple
+User=hermes
+WorkingDirectory=/opt/data/cynteka-dashboard
+Environment="PATH=/opt/data/cynteka-dashboard/.venv/bin"
+ExecStart=/opt/data/cynteka-dashboard/.venv/bin/streamlit run app.py --server.port=8501 --server.address=0.0.0.0 --server.headless=true
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
