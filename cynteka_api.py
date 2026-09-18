@@ -14,7 +14,7 @@ class CyntekaAPI:
     """Клиент для работы с Cynteka API"""
     
     def __init__(self):
-        self.base_url = os.getenv('CYNTEKA_API_URL', 'https://api.cynteka.ru')
+        self.base_url = os.getenv('CYNTEKA_API_URL', 'https://anvaz.cynteka.ru/core')
         self.api_token = os.getenv('CYNTEKA_API_TOKEN')
         
         if not self.api_token:
