@@ -3,6 +3,7 @@ Cynteka Dashboard - мониторинг заявок, счетов и дост�
 """
 import streamlit as st
 import pandas as pd
+import os
 from datetime import datetime, timedelta
 from cynteka_api import CyntekaAPI
 
@@ -13,6 +14,44 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+# ========== TELEGRAM WEB APP AUTHENTICATION ==========
+def check_telegram_auth():
+    """Проверка авторизации из Telegram Web App"""
+    query_params = st.query_params
+    
+    # Получаем параметры из URL (передаются ботом)
+    tg_user_id = query_params.get("tg_user_id")
+    tg_username = query_params.get("tg_username")
+    
+    # Белый список пользователей из .env
+    allowed_users = os.getenv("TELEGRAM_ALLOWED_USERS", "").split(",")
+    
+    # Если нет параметров Telegram — анонимный режим (для разработки)
+    if not tg_user_id:
+        if os.getenv("ALLOW_ANONYMOUS", "false").lower() == "true":
+            st.sidebar.warning("⚠️ Режим разработки: авторизация отключена")
+            return True
+        else:
+            st.error("❌ Доступ запрещён. Откройте дашборд через Telegram бота.")
+            st.info("Для получения доступа напишите администратору.")
+            st.stop()
+            return False
+    
+    # Проверка прав доступа
+    if allowed_users and tg_user_id not in allowed_users:
+        st.error(f"❌ Доступ запрещён для пользователя `{tg_username}` (ID: `{tg_user_id}`).")
+        st.info("Обратитесь к администратору для получения доступа.")
+        st.stop()
+        return False
+    
+    # Успешная авторизация — показываем инфо в сайдбаре
+    st.sidebar.success(f"👤 {tg_username or f'User {tg_user_id}'}")
+    return True
+
+# Проверяем авторизацию перед загрузкой дашборда
+check_telegram_auth()
+# ====================================================
 
 # Инициализация API
 @st.cache_resource

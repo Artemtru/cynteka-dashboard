@@ -1,0 +1,19 @@
+[Unit]
+Description=Cynteka Telegram Mini App Bot
+After=network.target cynteka-dashboard.service
+Requires=cynteka-dashboard.service
+
+[Service]
+Type=simple
+User=hermes
+Group=hermes
+WorkingDirectory=/opt/data/cynteka-dashboard
+Environment="PATH=/opt/data/cynteka-dashboard/.venv/bin:/usr/local/bin:/usr/bin:/bin"
+ExecStart=/opt/data/cynteka-dashboard/.venv/bin/python telegram_bot.py
+Restart=always
+RestartSec=10
+StandardOutput=append:/opt/data/cynteka-dashboard/logs/telegram-bot.log
+StandardError=append:/opt/data/cynteka-dashboard/logs/telegram-bot.log
+
+[Install]
+WantedBy=multi-user.target

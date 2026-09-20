@@ -11,6 +11,19 @@ services:
       - cynteka-net
     volumes:
       - ./logs:/app/logs
+    command: streamlit run app.py --server.port=8501 --server.address=0.0.0.0
+
+  telegram-bot:
+    build: .
+    container_name: cynteka-telegram-bot
+    env_file:
+      - .env
+    restart: unless-stopped
+    networks:
+      - cynteka-net
+    depends_on:
+      - cynteka-dashboard
+    command: python telegram_bot.py
 
 networks:
   cynteka-net:
