@@ -28,7 +28,7 @@
 ```
 
 **Button name:** `📊 Dashboard`  
-**Button URL:** `http://13.140.145.240:8501`
+**Button URL:** `https://syoma-dashboard.ru`
 
 ---
 
@@ -58,7 +58,7 @@ TELEGRAM_BOT_TOKEN=7123456789:AAE...
 TELEGRAM_ALLOWED_USERS=639180902
 
 # URL дашборда
-WEBAPP_URL=http://13.140.145.240:8501
+WEBAPP_URL=https://syoma-dashboard.ru
 
 # Для теста можно включить
 ALLOW_ANONYMOUS=false

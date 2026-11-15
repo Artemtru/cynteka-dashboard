@@ -96,7 +96,7 @@ selected_employees = st.sidebar.multiselect(
 )
 
 # Кнопка обновления
-if st.sidebar.button("🔄 Обновить данные", use_container_width=True):
+if st.sidebar.button("🔄 Обновить данные", width='stretch'):
     st.cache_resource.clear()
     st.rerun()
 
@@ -255,12 +255,12 @@ with tab1:
         
         # Отображаем таблицу с подсветкой
         styled_df = df_employees.style\
-            .applymap(color_efficiency, subset=['Эффективность %'])\
-            .applymap(color_overdue, subset=['Просрочено'])
+            .map(color_efficiency, subset=['Эффективность %'])\
+            .map(color_overdue, subset=['Просрочено'])
         
         st.dataframe(
             styled_df,
-            use_container_width=True,
+            width='stretch',
             height=500
         )
         
@@ -297,7 +297,7 @@ with tab1:
             
             st.dataframe(
                 df_details,
-                use_container_width=True,
+                width='stretch',
                 height=300
             )
         
@@ -368,7 +368,7 @@ with tab2:
         
         st.dataframe(
             df_projects,
-            use_container_width=True,
+            width='stretch',
             height=500
         )
         
@@ -402,7 +402,7 @@ with tab2:
                     proj_emp_stats[emp]['Просрочено'] += 1
             
             df_proj_emp = pd.DataFrame(proj_emp_stats).T
-            st.dataframe(df_proj_emp, use_container_width=True)
+            st.dataframe(df_proj_emp, width='stretch')
         
         # График статусов по проектам
         st.subheader("Статусы заявок по проектам (топ-10)")
@@ -437,8 +437,8 @@ with tab2:
                 return ''
             
             st.dataframe(
-                df_display.style.applymap(highlight_pending, subset=['Дней на согласовании']),
-                use_container_width=True,
+                df_display.style.map(highlight_pending, subset=['Дней на согласовании']),
+                width='stretch',
                 height=400
             )
             
@@ -474,7 +474,7 @@ with tab3:
             
             st.dataframe(
                 df_display,
-                use_container_width=True,
+                width='stretch',
                 height=400
             )
             

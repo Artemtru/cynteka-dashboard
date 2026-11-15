@@ -1,5 +1,5 @@
-streamlit
-pandas
-requests
-python-dotenv
-python-telegram-bot>=21.0
+streamlit>=1.46,<2
+pandas>=2.1,<4
+requests>=2.31,<3
+python-dotenv>=1.0,<2
+python-telegram-bot>=21.0,<23

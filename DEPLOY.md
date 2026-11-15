@@ -73,6 +73,8 @@ curl http://localhost:8501/_stcore/health
 
 ## Вариант 3: Reverse proxy через Nginx (для продакшн)
 
+> Для домена **syoma-dashboard.ru** см. [DOMAIN_SETUP.md](DOMAIN_SETUP.md).
+
 Если хотите использовать домен и HTTPS:
 
 ```bash
