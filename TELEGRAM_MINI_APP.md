@@ -26,7 +26,7 @@
    Configure menu button
    ```
    - **Button name:** `📊 Dashboard`
-   - **Button URL:** `http://13.140.145.240:8501` (URL где запущен Streamlit)
+   - **Button URL:** `https://syoma-dashboard.ru` (URL где запущен Streamlit)
 
 ---
 
@@ -54,7 +54,7 @@ TELEGRAM_ALLOWED_USERS=639180902,123456789
 # ↑ Ваши Telegram ID через запятую (узнать свой ID: @userinfobot)
 
 # Streamlit Web App URL
-WEBAPP_URL=http://13.140.145.240:8501
+WEBAPP_URL=https://syoma-dashboard.ru
 
 # Development (для тестирования БЕЗ Telegram)
 ALLOW_ANONYMOUS=false  # true — разрешит доступ без бота (ТОЛЬКО для разработки!)

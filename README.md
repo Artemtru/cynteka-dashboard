@@ -190,6 +190,8 @@ sudo systemctl status cynteka-dashboard
 
 ### Nginx reverse proxy
 
+> Для домена **syoma-dashboard.ru** готовый конфиг и пошаговая инструкция: [DOMAIN_SETUP.md](DOMAIN_SETUP.md), `deploy/nginx/syoma-dashboard.ru.conf`.
+
 ```nginx
 server {
     listen 80;

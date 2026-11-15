@@ -18,7 +18,7 @@ load_dotenv()
 
 # Настройки
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-WEBAPP_URL = os.getenv("WEBAPP_URL", "http://13.140.145.240:8501")
+WEBAPP_URL = os.getenv("WEBAPP_URL", "https://syoma-dashboard.ru")
 ALLOWED_USERS = os.getenv("TELEGRAM_ALLOWED_USERS", "").split(",")
 
 # Логирование
